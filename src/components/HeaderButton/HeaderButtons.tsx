@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HeaderButton.css";
 
 //Interfaces
@@ -19,14 +19,23 @@ const preDefinedCities: DefinedCityTypes = [
 
 interface HeaderButtonProps {
     setSearchData: (cityName: string) => void; // Function to update search data based on selected city
+    setActiveCity: (city: number) => void
+    activeCity: number | null;
 }
 
-const HeaderButton: React.FC<HeaderButtonProps> = ({ setSearchData }) => {
+const HeaderButton: React.FC<HeaderButtonProps> = ({ setSearchData, setActiveCity, activeCity }) => {
+
+
+    const handleCityClick = (city: CityInfo) => {
+        setSearchData(city.name);
+        setActiveCity(city.id); // Update the active city state
+    };
     return (
         <div className="Headercontainer">
             {preDefinedCities.map((item) => (
                 // Using 'id' as the key for better performance and stability
-                <div key={item.id} onClick={() => setSearchData(item.name)}>
+                <div key={item.id} className={activeCity === item.id ? "activeCity" : ""} onClick={() => handleCityClick(item)}
+                >
                     {item.name}
                 </div>
             ))}

@@ -69,13 +69,13 @@ const TripPlanner = () => {
     const [forecast, setForecast] = useState<ForecastResponseData | null>(null);
     const [searchData, setSearchData] = useState<string>("");
     const [cities, setCities] = useState<City[]>([]);
-    const [selectedCity, setSelectedCity] = useState<string | null>("");
+    const [selectedCity, setSelectedCity] = useState<string | undefined>("");
     const [cityDescription, setCityDescription] = useState<string>("");
     const [selectedDate, setSelectedDate] = useState<string>("");
     const [selectedCityImage, setSelectedCityImage] = useState<string>("");
     const [displayForecast, setDisplayForecast] =
         useState<ForecastResponseData | null>(null);
-
+    const [activeCity, setActiveCity] = useState<number | null>(null);
     //Fetch's list of cities i.e, AutoType
     const fetchCities = async (param: string) => {
         try {
@@ -119,6 +119,7 @@ const TripPlanner = () => {
                 async (position) => {
                     const { latitude, longitude } = position.coords;
                     try {
+                        setActiveCity(null)
                         const weatherResponse = await axios.get(
                             `${WEATHER_API_URL}/weather?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}&units=metric`
                         );
@@ -149,9 +150,9 @@ const TripPlanner = () => {
 
     const HandleOnSearchCity = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const changedValue = e.target.value;
-        console.log(changedValue);
         setSearchData(changedValue);
         await fetchCities(changedValue);
+        setActiveCity(null)
     };
 
     const handleOnSearchChange = async (city: City) => {
@@ -215,7 +216,6 @@ const TripPlanner = () => {
     const maxDate = new Date();
     maxDate.setDate(maxDate.getDate() + 5);
     const maxDateStr = maxDate.toISOString().split("T")[0];
-
     return (
         <div
             className="container"
@@ -228,7 +228,7 @@ const TripPlanner = () => {
             <ToastContainer />
             <div className="container-box">
                 <div className="head-cities">
-                    <HeaderButton setSearchData={handleOnSearchChangeByName} />
+                    <HeaderButton setActiveCity={setActiveCity} activeCity={activeCity} setSearchData={handleOnSearchChangeByName} />
                 </div>
                 <div className="search-container">
                     <div className="search-bar">

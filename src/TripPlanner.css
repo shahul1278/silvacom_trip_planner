@@ -32,9 +32,9 @@
   width: 93%;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   background-color: white;
-  max-height: 200px; /* Adjust as needed */
-  overflow-y: auto; /* Enables scroll if list is too long */
-  z-index: 1000; /* Ensures the list appears above other content */
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
 }
 
 .cities-list li {
@@ -71,7 +71,7 @@
   cursor: pointer;
 }
 .container-box {
-  border: 1px solid black;
+  border: 0.5px solid rgb(76, 76, 76);
   border-radius: 2rem;
   width: 50%;
   max-width: 768px;
@@ -84,8 +84,8 @@
   padding-right: 8rem;
   height: fit-content;
   box-shadow: 0 10px 15px -3px rgba(156, 163, 175, 0.1),
-    0 4px 6px -2px rgba(156, 163, 175, 0.05);
-  background-image: linear-gradient(to top right, #53718b, #013a9d);
+    0 4px 6px -2px rgba(52, 97, 175, 0.05);
+  background-image: linear-gradient(to top right, #5d69d8, #1437d5);
 }
 .App {
   text-align: center;
@@ -125,24 +125,31 @@
   }
 }
 .styled-date-input {
-  font-size: 18px;
-  padding: 10px 15px;
+  font-size: 20px;
+  padding: 15px 20px;
   border-radius: 8px;
   border: 2px solid #007bff;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  width: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
   display: block;
-  margin: 10px 0;
+  margin: 20px auto;
   background-color: #fff;
   color: #495057;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: all 0.3s ease;
+}
+
+.styled-date-input:hover {
+  border-color: #0056b3;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
 }
 
 .styled-date-input:focus {
   border-color: #80bdff;
-  outline: 0;
+  outline: none;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+
 .container-box::before {
   content: "";
   position: absolute;
@@ -168,7 +175,10 @@
   }
 
   .search-container {
-    width: 100%;
+    position: relative;
+    width: 80%;
+    margin: 50px auto;
+    border-radius: 1rem;
   }
 
   .search-input,
@@ -185,8 +195,11 @@
   }
 
   .search-bar {
-    flex-direction: column;
-    align-items: stretch;
+    display: flex;
+    justify-content: space-between; /* Changed from space-around to space-between for better space distribution */
+    align-items: center; /* Ensure vertical alignment */
+    padding: 0 10px; /* Add some padding on smaller screens */
+    width: 100%; /* Ensure it takes full width */
   }
 
   .cities-list {
@@ -203,5 +216,42 @@
   .search-input,
   .styled-date-input {
     font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .search-bar {
+    flex-wrap: nowrap;
+  }
+
+  .search-input {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .iconCurrentLocation {
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar {
+    padding: 0 5px;
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .styled-date-input {
+    font-size: 14px;
+    padding: 12px 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .styled-date-input {
+    font-size: 14px;
+    padding: 10px 1px;
   }
 }

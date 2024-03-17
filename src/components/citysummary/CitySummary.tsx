@@ -11,7 +11,7 @@ const CitySummary: React.FC<CitySummaryProps> = ({ data }) => {
 
     return (
         <div>
-            <h3 className="city-summary-header">Summary:</h3>
+            <h2 className="city-summary-header">Summary:</h2>
             <p className="citysummary">{data}</p>
         </div>
     );

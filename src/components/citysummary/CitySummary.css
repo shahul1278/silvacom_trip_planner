@@ -6,6 +6,9 @@
   max-width: 800px;
   text-align: justify;
 }
+.city-summary-header {
+  color: rgb(255, 255, 255);
+}
 
 @media (max-width: 768px) {
   .citysummary {

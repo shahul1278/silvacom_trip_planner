@@ -1,6 +1,58 @@
-.Headercontainer{
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-    color:aliceblue;
+.Headercontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  cursor: pointer;
+  color: aliceblue;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.Headercontainer div {
+  cursor: pointer;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  border-radius: 2rem;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.Headercontainer div:hover {
+  background-color: rgb(254, 254, 254);
+  border-radius: 2rem;
+  color: black;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 400;
+}
+
+.activeCity {
+  background-color: #fcfcfc;
+  color: rgb(0, 0, 0);
+  border-radius: 2rem;
+}
+
+@media (max-width: 768px) {
+  .Headercontainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .Headercontainer div {
+    flex-basis: calc(
+      50% - 10px
+    ); /* Adjust width to fit 2 items per row, accounting for margin */
+    margin: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Headercontainer div {
+    flex-basis: 100%;
+  }
 }

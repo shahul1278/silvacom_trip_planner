@@ -15,7 +15,7 @@ const TimeAndLocation: React.FC<TimeAndLocationProps> = ({
   return (
     <div className="time-and-location">
       <div className="time-display">
-        <span className="time-label">Current Time:</span>
+        <span className="time-label">Current Time :</span>
         {formatTimestampToLocalTime(dt, timezone)}
       </div>
     </div>
