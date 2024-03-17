@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import CurrentWeather from "./components/currentweather/CurrentWeather";
 import ForecastWeather from "./components/forecastweather/ForeCastWeather";
@@ -42,26 +42,6 @@ interface HourlyForecast {
     temp: number;
     icon: string;
 }
-
-interface WeatherData {
-    city: string;
-    weather: [
-        {
-            description: string;
-            icon: string;
-        }
-    ];
-    main: {
-        temp: number;
-        feels_like: number;
-        humidity: number;
-        pressure: number;
-    };
-    wind: {
-        speed: number;
-    };
-}
-
 
 interface Weather {
     city: string;
@@ -199,9 +179,9 @@ const TripPlanner = () => {
         }
     };
 
-    const handleOnSearchChangeByName = async (cityName: string) => {
+    const handleOnSearchChangeByName = useCallback(async (cityName: string) => {
         await fetchCities(cityName);
-    };
+    }, []);
 
     // Handler for date change
     const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -228,7 +208,7 @@ const TripPlanner = () => {
         if (selectedCity) {
             handleOnSearchChangeByName(selectedCity);
         }
-    }, [searchData, selectedCity]);
+    }, [searchData, selectedCity, handleOnSearchChangeByName]);
 
     // Get today's date and the maximum date which is 5 days in the future
     const today = new Date().toISOString().split("T")[0];
