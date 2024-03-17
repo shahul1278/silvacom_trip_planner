@@ -62,9 +62,6 @@ interface WeatherData {
     };
 }
 
-interface CurrentWeatherProps {
-    data: WeatherData;
-}
 
 interface Weather {
     city: string;
@@ -221,7 +218,7 @@ const TripPlanner = () => {
             // If the date is cleared, show the complete forecast data
             setDisplayForecast(forecast);
         }
-    }, [selectedDate]);
+    }, [selectedDate, forecast]);
 
     useEffect(() => {
         // Effect for reloading cities based on search data and selected city
