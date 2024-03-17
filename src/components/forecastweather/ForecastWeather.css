@@ -1,0 +1,36 @@
+.forecast-container {
+  margin: 20px 0;
+}
+
+.forecast-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #f0f0f0;
+}
+
+.forecast {
+  display: flex;
+  overflow-x: auto; /* Allows horizontal scrolling for many forecast items */
+  gap: 10px; /* Adds space between forecast items */
+}
+
+.forecast-item {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  text-align: center; /* Centers the text and image */
+}
+
+.forecast-icon {
+  width: 50px; /* Adjust as needed */
+  margin: 5px auto; /* Centers the image horizontally */
+  border-radius:2rem;
+  background-color: #f28a8a;
+  object-fit: contain;
+  
+}
+
+.forecast-temp {
+  margin-top: 5px;
+  font-size: 16px;
+}
